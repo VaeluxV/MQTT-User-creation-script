@@ -6,7 +6,7 @@ This will get the latest version of the script from the repo, run it, then once 
 
 ---
 
-You can also download manually, then run this script standalone.
+You can also download manually, then run this script standalone. (Must be running as root!)
 
 The config must contain both the anonymous auth setting as well as the password file location. I might add more options for this later.
 
