@@ -1,8 +1,16 @@
 # MQTT User Creation Script
 
-Run the script using ```curl -s -o mqtt_user_management_tool.sh https://raw.githubusercontent.com/VaeluxV/MQTT-User-creation-script/main/mqtt_user_management_tool.sh && sudo bash mqtt_user_management_tool.sh && rm mqtt_user_management_tool.sh```
+Run the script using
+```bash
+curl -s -o mqtt_user_management_tool.sh https://raw.githubusercontent.com/VaeluxV/MQTT-User-creation-script/main/mqtt_user_management_tool.sh && sudo bash mqtt_user_management_tool.sh && rm mqtt_user_management_tool.sh
+```
 
 This will get the latest version of the script from the repo, run it, then once done, it will auto remove itself.
+
+You can also use this version to download and run without removing:
+```bash
+curl -s -o mqtt_user_management_tool.sh https://raw.githubusercontent.com/VaeluxV/MQTT-User-creation-script/main/mqtt_user_management_tool.sh && sudo bash mqtt_user_management_tool.sh
+```
 
 ---
 
