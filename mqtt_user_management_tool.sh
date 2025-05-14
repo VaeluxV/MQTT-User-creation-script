@@ -17,7 +17,7 @@ check_root() {
 # Function to check if mosquitto_passwd exists
 check_dependencies() {
   if ! command -v mosquitto_passwd &> /dev/null; then
-    echo "❌ mosquitto_passwd could not be found. Please install Mosquitto."
+    echo "Error: mosquitto_passwd could not be found. Please install Mosquitto."
     exit 1
   fi
 }
@@ -38,7 +38,7 @@ add_user() {
   echo
   [ "$password" != "$confirm" ] && { echo "Passwords do not match."; return; }
   echo "$password" | mosquitto_passwd -b "$PASSWORD_FILE" "$username" "$password"
-  echo "✅ User '$username' added successfully."
+  echo "User '$username' added successfully."
 }
 
 # Function to delete a user
@@ -51,12 +51,12 @@ delete_user() {
   [[ "$confirm" != "Y" ]] && { echo "Cancelled."; return; }
 
   mosquitto_passwd -D "$PASSWORD_FILE" "$username"
-  echo "🗑️  User '$username' deleted."
+  echo "User '$username' deleted."
 }
 
 Function to list users
 list_users() {
-  echo "📋 Registered MQTT users:"
+  echo "Registered MQTT users:"
   cut -d: -f1 "$PASSWORD_FILE"
 }
 
@@ -70,7 +70,7 @@ change_password() {
   echo
   [ "$password" != "$confirm" ] && { echo "Passwords do not match."; return; }
   echo "$password" | mosquitto_passwd -b "$PASSWORD_FILE" "$username" "$password"
-  echo "🔑 Password for '$username' updated."
+  echo "Password for '$username' updated."
 }
 
 # Function to batch add users
@@ -115,7 +115,7 @@ batch_add_users() {
 
     if [ "${#existing_users[@]}" -gt 0 ]; then
       echo ""
-      echo "⚠️  Some usernames already exist in the password file:"
+      echo "Some usernames already exist in the password file:"
       printf ' - %s\n' "${existing_users[@]:0:5}"
       if [ "${#existing_users[@]}" -gt 5 ]; then
         echo " ...and $(( ${#existing_users[@]} - 5 )) more."
@@ -150,7 +150,7 @@ batch_add_users() {
     printf "\r[%s] %d%%" "$bar" "$percent"
   done
   echo ""
-  echo "✅ Batch user creation complete."
+  echo "Batch user creation complete."
 
   echo ""
   echo "How would you like to retrieve the user list?"
@@ -176,7 +176,7 @@ batch_add_users() {
   fi
 
   echo ""
-  echo "📄 Credentials saved to: $outfile"
+  echo "Credentials saved to: $outfile"
 }
 
 # Batch delete users with a prefix
@@ -210,7 +210,7 @@ batch_delete_users() {
     mosquitto_passwd -D "$PASSWORD_FILE" "$u"
   done
 
-  echo "🗑️  Deleted ${#matches[@]} users with prefix '${prefix}_'"
+  echo "Deleted ${#matches[@]} users with prefix '${prefix}_'"
 }
 
 # Batch change passwords
@@ -255,7 +255,7 @@ batch_change_passwords() {
   } > "$outfile"
 
   echo ""
-  echo "🔑 Passwords changed and saved to: $outfile"
+  echo "Passwords changed and saved to: $outfile"
   read -p "Print password file to terminal too? (Y to confirm): " show
   [[ "$show" == "Y" ]] && cat "$outfile"
 }
@@ -264,7 +264,7 @@ batch_change_passwords() {
 main_menu() {
   while true; do
     echo ""
-    echo "👤 MQTT User Manager"
+    echo "MQTT User Manager"
     echo "========================="
     echo "A) Add a user"
     echo "B) Batch add users"
