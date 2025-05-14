@@ -2,7 +2,7 @@
 
 # MQTT User Management Script for Mosquitto
 # Requires: mosquitto_passwd
-# Last updated: 2025-05-13
+# Last updated: 2025-05-14
 
 PASSWORD_FILE="/etc/mosquitto/passwd"
 
@@ -17,7 +17,7 @@ check_root() {
 # Function to check if mosquitto_passwd exists
 check_dependencies() {
   if ! command -v mosquitto_passwd &> /dev/null; then
-    echo "mosquitto_passwd could not be found. Please install Mosquitto."
+    echo "❌ mosquitto_passwd could not be found. Please install Mosquitto."
     exit 1
   fi
 }
@@ -264,7 +264,7 @@ batch_change_passwords() {
 main_menu() {
   while true; do
     echo ""
-    echo "MQTT User Manager"
+    echo "👤 MQTT User Manager"
     echo "========================="
     echo "A) Add a user"
     echo "B) Batch add users"
