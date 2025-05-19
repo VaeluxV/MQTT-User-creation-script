@@ -1,4 +1,4 @@
-# MQTT User Creation Script
+# MQTT User Creation & Management Script
 
 Run the script using
 ```bash
